@@ -15,6 +15,8 @@ struct MainView: View {
                 .tabItem { Label("Menu", systemImage:"list.dash")}
             OrderView()
                 .tabItem { Label("Order", systemImage:"square.and.pencil") }
+            PostView()
+                .tabItem{Label("Post", systemImage:"doc.plaintext")}
         }
     }
 }
