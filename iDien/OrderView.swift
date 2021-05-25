@@ -1,0 +1,42 @@
+//
+//  OrderView.swift
+//  iDien
+//
+//  Created by Azizul Islam on 17/4/21.
+//
+
+import SwiftUI
+
+struct OrderView: View {
+    @EnvironmentObject var order : Order
+    var body: some View {
+        NavigationView{
+            List{
+                Section{
+                    ForEach(order.items){item in
+                        HStack{
+                            Text(item.name)
+                            Spacer()
+                            Text("$\(item.price)")
+                        }
+                    }
+                }
+                
+                Section{
+                    NavigationLink(destination:CheckOutView()){
+                        Text("Place order")
+                    }
+                }
+            }
+            .navigationTitle("Order")
+            .listStyle(InsetGroupedListStyle())
+        }
+    }
+}
+
+struct OrderView_Previews: PreviewProvider {
+    static var previews: some View {
+        OrderView()
+            .environmentObject(Order())
+    }
+}
